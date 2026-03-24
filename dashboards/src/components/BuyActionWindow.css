@@ -1,0 +1,74 @@
+#buy-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  width: 320px;
+  z-index: 1000;
+  border: 1px solid #e0e0e0;
+}
+
+#buy-window .regular-order {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+#buy-window .inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#buy-window fieldset {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0;
+  flex: 1;
+}
+
+#buy-window legend {
+  font-size: 11px;
+  color: #666;
+  padding: 0 4px;
+}
+
+#buy-window input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+#buy-window .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#buy-window .buttons span {
+  font-size: 12px;
+  color: #888;
+}
+
+#buy-window .buttons div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-grey {
+  background-color: #f8f9fa;
+  color: #444;
+  border: 1px solid #dcdcdc;
+}
+
+.btn-grey:hover {
+  background-color: #f1f2f4;
+}
