@@ -1,0 +1,57 @@
+/* Wrapper width 80vw */
+.tables-wrapper {
+  width: 80vw;
+  margin: 50px auto;
+}
+
+/* Headings */
+.tables-wrapper h2 {
+  margin: 40px 0 20px 0;
+  font-weight: 600;
+}
+
+/* Table Styling */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.custom-table thead {
+  background-color: #f7f7f7;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-table th {
+  font-weight: 600;
+}
+
+/* FREE badge */
+.badge.free {
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+/* Hover effect */
+.custom-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* Note text */
+.note {
+  font-size: 14px;
+  color: #555;
+  margin-top: -10px;
+}

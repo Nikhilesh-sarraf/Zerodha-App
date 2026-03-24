@@ -1,0 +1,11 @@
+.education_sta{
+    text-align: left;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.varsity_img img{
+    width: 400px;
+}

@@ -1,0 +1,40 @@
+/* Small Height Navbar */
+.navbar-custom {
+  height: 70px;                 /* Small height */
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 25%;
+  margin-left: 50px;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav-links li i {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+
+
