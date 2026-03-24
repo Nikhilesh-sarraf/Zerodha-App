@@ -9,7 +9,7 @@ const Orders = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3002/newOrder", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:3002"}/newOrder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
