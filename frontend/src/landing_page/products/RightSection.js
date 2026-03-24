@@ -15,7 +15,7 @@ function RightSection({Imageurl,heading,paragraph, linktopic}) {
               </div>
               <div className='col-1'></div>
               <div className='col-5'>
-                 <img src={Imageurl} style={{width:"500px"}}/>
+                 <img src={Imageurl} alt="Product Image" style={{width:"500px"}}/>
               </div>
            </div>
         </div>

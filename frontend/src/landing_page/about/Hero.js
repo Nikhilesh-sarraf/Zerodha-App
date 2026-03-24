@@ -24,7 +24,7 @@ function Hero() {
              <div className='container'>
                 <div className='row'>
                     <div className='col-6'>
-                        <img src='media/images/nithinKamath.jpg' style={{width:"200px", borderRadius:'50%'}}/>
+                        <img src='media/images/nithinKamath.jpg' alt="Nithin Kamath" style={{width:"200px", borderRadius:'50%'}}/>
                         <h2>Nithin Kamath</h2>
                         <p>Founder,CEO</p>
                     </div>

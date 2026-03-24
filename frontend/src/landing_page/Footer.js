@@ -6,7 +6,7 @@ function Footer() {
     <div className="container">
       <div className="row">
         <div className="col-4 logo_design">
-            <img src="media/images/logo.svg" />
+            <img src="media/images/logo.svg" alt="Logo" />
             <p>©2010-2026,Zerodha Broking Ltd.All rights reserved.</p>
             <div className="icon">
             <i class='bx bxl-twitter' ></i>

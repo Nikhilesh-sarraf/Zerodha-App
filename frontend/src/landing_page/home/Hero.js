@@ -5,7 +5,7 @@ function Hero() {
     return ( 
         
          <div className='container'>
-              <img src='media/images/homeHero.png'/>
+              <img src='media/images/homeHero.png' alt="Hero Section" />
               <h1>Invest in everything</h1>
               <p>Online platform to invest in stocks, derivatives, mutual funds, ETFs, bonds, and more.</p>
               <button>Signup Now</button>
