@@ -10,12 +10,12 @@ function RightSection({Imageurl,heading,paragraph, linktopic}) {
                  <h2 style={{marginBottom:"10px"}}>{heading}</h2>
                  <p>{paragraph}</p>
                  <div>
-                    <a href=''>{linktopic}<i class='bx bx-right-arrow-alt'></i></a>
+                    <a href='/'>{linktopic}<i class='bx bx-right-arrow-alt'></i></a>
                  </div>
               </div>
               <div className='col-1'></div>
               <div className='col-5'>
-                 <img src={Imageurl} alt="Product Image" style={{width:"500px"}}/>
+                 <img src={Imageurl} alt="Product" style={{width:"500px"}}/>
               </div>
            </div>
         </div>

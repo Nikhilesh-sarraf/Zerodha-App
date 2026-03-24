@@ -29,8 +29,8 @@ function Status() {
                  <div className='col-6 status_dia' >
                     <img src='media/images/ecosystem.png' alt="Ecosystem" />
                     <span className='anchorlink'>
-                    <a href=''>Explore our products <i class='bx bx-right-arrow-alt'></i></a>
-                    <a href=''>Try Kite demo  <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href='/'>Explore our products <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href='/'>Try Kite demo  <i class='bx bx-right-arrow-alt'></i></a>
                     </span>
                  </div>
             </div>

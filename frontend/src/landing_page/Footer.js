@@ -148,15 +148,15 @@ function Footer() {
             justifyContent: "space-evenly",
           }}
         >
-          <a href="">NSE</a>
-          <a href="">BSE </a>
-          <a href="">MCX </a>
-          <a href="">Terms & conditions </a>
-          <a href="">Policies & procedures </a>
-          <a href="">Privacy policy </a>
-          <a href="">Disclosure </a>
-          <a href="">For investor's attention </a>
-          <a href="">Investor charter</a>
+          <a href="/">NSE</a>
+          <a href="/">BSE </a>
+          <a href="/">MCX </a>
+          <a href="/">Terms & conditions </a>
+          <a href="/">Policies & procedures </a>
+          <a href="/">Privacy policy </a>
+          <a href="/">Disclosure </a>
+          <a href="/">For investor's attention </a>
+          <a href="/">Investor charter</a>
         </div>
       </div>
     </div>
