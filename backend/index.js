@@ -4,6 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const { UserModel } = require("./model/UserModel");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
@@ -17,6 +20,11 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+passport.use(new LocalStrategy({ usernameField: "email" }, UserModel.authenticate()));
+passport.serializeUser(UserModel.serializeUser());
+passport.deserializeUser(UserModel.deserializeUser());
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -195,6 +203,29 @@ app.get("/allHoldings", async (req, res) => {
     console.error("Error fetching holdings:", error);
     res.status(500).send("Error fetching holdings");
   }
+});
+
+app.post("/signup", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = new UserModel({ email });
+    const registeredUser = await UserModel.register(user, password);
+    res.status(200).json({ success: true, message: "Registered successfully!", user: registeredUser });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: err.message });
+    }
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+    res.status(200).json({ success: true, message: "Login successful!", user });
+  })(req, res, next);
 });
 
 app.get("/allPositions", async (req, res) => {
