@@ -228,6 +228,33 @@ app.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
+app.post("/updatePassword", async (req, res) => {
+  try {
+    const { email, oldPassword, newPassword } = req.body;
+    const user = await UserModel.findOne({ email });
+    if (!user) return res.status(404).json({ success: false, message: "User not found!" });
+    
+    await user.changePassword(oldPassword, newPassword);
+    res.status(200).json({ success: true, message: "Password updated successfully!" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update password. Verify your old password." });
+  }
+});
+
+app.post("/forgotPassword", async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    const user = await UserModel.findOne({ email });
+    if (!user) return res.status(404).json({ success: false, message: "User not found!" });
+    
+    await user.setPassword(newPassword);
+    await user.save();
+    res.status(200).json({ success: true, message: "Password reset successfully!" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 app.get("/allPositions", async (req, res) => {
   try {
     let allPositions = await PositionsModel.find({});

@@ -7,9 +7,13 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 
 const UserModel = model("User", UserSchema);
 
