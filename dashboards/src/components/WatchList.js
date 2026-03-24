@@ -31,34 +31,45 @@ const WatchList = () => {
         {watchlist.map((stock, index) => {
           return <WatchListItem stock={stock} key={index} />;
         })}
+        
+        {/* Render Chart INSIDE the scrollable list container at the very bottom */}
+        <div style={{ padding: "20px" }}>
+          <DoughnutChart data={{
+            labels: watchlist.slice(0, 10).map((subArray) => subArray.name), // 10 bounds on chart map to maintain readability constraints
+            datasets: [
+              {
+                label: "Price",
+                data: watchlist.slice(0, 10).map((subArray) => subArray.price),
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.5)",
+                  "rgba(54, 162, 235, 0.5)",
+                  "rgba(255, 206, 86, 0.5)",
+                  "rgba(75, 192, 192, 0.5)",
+                  "rgba(153, 102, 255, 0.5)",
+                  "rgba(255, 159, 64, 0.5)",
+                  "rgba(100, 200, 100, 0.5)",
+                  "rgba(150, 150, 200, 0.5)",
+                  "rgba(200, 150, 150, 0.5)",
+                  "rgba(100, 100, 200, 0.5)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                  "rgba(100, 200, 100, 1)",
+                  "rgba(150, 150, 200, 1)",
+                  "rgba(200, 150, 150, 1)",
+                  "rgba(100, 100, 200, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          }} />
+        </div>
       </ul>
-      
-      <DoughnutChart data={{
-        labels: watchlist.map((subArray) => subArray.name),
-        datasets: [
-          {
-            label: "Price",
-            data: watchlist.map((subArray) => subArray.price),
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.5)",
-              "rgba(54, 162, 235, 0.5)",
-              "rgba(255, 206, 86, 0.5)",
-              "rgba(75, 192, 192, 0.5)",
-              "rgba(153, 102, 255, 0.5)",
-              "rgba(255, 159, 64, 0.5)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-          },
-        ],
-      }} />
 
       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />} 
     </div>

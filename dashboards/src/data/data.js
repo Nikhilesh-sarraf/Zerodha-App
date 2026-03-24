@@ -1,61 +1,31 @@
-export const watchlist = [
-  {
-    name: "INFY",
-    price: "1555.45",
-    percent: "-1.60%",
-    isDown: true,
-  },
-  {
-    name: "ONGC",
-    price: "244.60",
-    percent: "+1.20%",
-    isDown: false,
-  },
-  {
-    name: "TCS",
-    price: "3194.80",
-    percent: "-0.25%",
-    isDown: true,
-  },
-  {
-    name: "WIPRO",
-    price: "577.75",
-    percent: "+0.32%",
-    isDown: false,
-  },
-  {
-    name: "RELIANCE",
-    price: "2112.40",
-    percent: "+1.44%",
-    isDown: false,
-  },
-  {
-    name: "HDFCBANK",
-    price: "1522.35",
-    percent: "+0.11%",
-    isDown: false,
-  },
+const companyNames = [
+  "Reliance Industries Ltd", "Tata Consultancy Services (TCS)", "HDFC Bank", "ICICI Bank", "Infosys",
+  "Hindustan Unilever Ltd (HUL)", "ITC Ltd", "State Bank of India (SBI)", "Bharti Airtel", "Kotak Mahindra Bank",
+  "Larsen & Toubro (L&T)", "Axis Bank", "Bajaj Finance", "Bajaj Finserv", "HCL Technologies",
+  "Wipro", "Asian Paints", "Maruti Suzuki India", "Sun Pharmaceutical Industries", "Titan Company",
+  "UltraTech Cement", "Nestlé India", "Mahindra & Mahindra (M&M)", "NTPC Ltd", "Power Grid Corporation",
+  "Tata Motors", "Adani Enterprises", "Adani Ports & SEZ", "JSW Steel", "Tata Steel",
+  "Coal India", "IndusInd Bank", "Dr. Reddy’s Laboratories", "Cipla", "Britannia Industries",
+  "Divi’s Laboratories", "SBI Life Insurance", "HDFC Life Insurance", "Eicher Motors", "Grasim Industries",
+  "Hero MotoCorp", "ONGC (Oil & Natural Gas)", "BPCL (Bharat Petroleum)", "Apollo Hospitals", "Tech Mahindra",
+  "UPL Ltd", "Shriram Finance", "Trent Ltd", "Bajaj Auto", "Hindalco Industries"
 ];
 
-export const positions = [
-  {
-    product: "CNC",
-    name: "EVEREADY",
-    qty: 2,
-    avg: 316.27,
-    price: 312.35,
-    net: "+0.58%",
-    day: "-1.24%",
-    isLoss: true,
-  },
-  {
-    product: "CNC",
-    name: "JUBLFOOD",
-    qty: 1,
-    avg: 3124.75,
-    price: 3082.65,
-    net: "+10.04%",
-    day: "-1.35%",
-    isLoss: true,
-  },
-];
+export const watchlist = companyNames.map((name, index) => {
+  // Deterministic pseudo-random values to prevent flickering on re-renders
+  const hash = (index + 1) * 111;
+  const price = ((hash * 7) % 3500 + 150).toFixed(2);
+  const percentNum = ((hash * 3) % 7 - 3.5);
+  const isDown = percentNum < 0;
+  const percentStr = Math.abs(percentNum).toFixed(2);
+  const formattedPercent = `${isDown ? '-' : '+'}${percentStr}%`;
+  
+  return { 
+    name, 
+    price, 
+    percent: formattedPercent, 
+    isDown 
+  };
+});
+
+export const positions = []; // Deprecated, to be fetched dynamically

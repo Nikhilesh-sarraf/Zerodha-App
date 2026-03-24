@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Position = () => {
+const Positions = () => {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL || "http://localhost:3002"}/allPositions`)
-      .then((res) => res.json())
-      .then((data) => setPositions(data))
-      .catch((err) => console.error(err));
+    axios.get("https://zerodha-app-o0e6.onrender.com/allPositions").then((res) => {
+      setPositions(res.data);
+    });
   }, []);
 
   return (
     <>
       <h3 className="title">Positions ({positions.length})</h3>
+
       <div className="order-table">
         <table>
           <thead>
@@ -40,9 +41,7 @@ const Position = () => {
                   <td>{stock.qty}</td>
                   <td>{stock.avg.toFixed(2)}</td>
                   <td>{stock.price.toFixed(2)}</td>
-                  <td className={profClass}>
-                    {(curValue - stock.avg * stock.qty).toFixed(2)}
-                  </td>
+                  <td className={profClass}>{(curValue - stock.avg * stock.qty).toFixed(2)}</td>
                   <td className={dayClass}>{stock.day}</td>
                 </tr>
               );
@@ -54,4 +53,4 @@ const Position = () => {
   );
 };
 
-export default Position;
+export default Positions;

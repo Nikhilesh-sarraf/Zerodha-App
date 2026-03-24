@@ -265,6 +265,16 @@ app.get("/allPositions", async (req, res) => {
   }
 });
 
+app.get("/allOrders", async (req, res) => {
+  try {
+    let allOrders = await OrdersModel.find({});
+    res.json(allOrders);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).send("Error fetching orders");
+  }
+});
+
 app.post("/newOrder", async (req, res) => {
   try {
     let newOrder = new OrdersModel({
@@ -275,7 +285,50 @@ app.post("/newOrder", async (req, res) => {
     });
 
     await newOrder.save();
-    res.send("Order saved!");
+
+    let holding = await HoldingsModel.findOne({ name: req.body.name });
+    if (holding) {
+      if (req.body.mode === "BUY") {
+        holding.qty += req.body.qty;
+      } else {
+        holding.qty -= req.body.qty;
+      }
+      await holding.save();
+    } else if (req.body.mode === "BUY") {
+      let newHolding = new HoldingsModel({
+        name: req.body.name,
+        qty: req.body.qty,
+        avg: req.body.price,
+        price: req.body.price,
+        net: "+0.00%",
+        day: "+0.00%",
+      });
+      await newHolding.save();
+    }
+
+    let position = await PositionsModel.findOne({ name: req.body.name });
+    if (position) {
+      if (req.body.mode === "BUY") {
+        position.qty += req.body.qty;
+      } else {
+        position.qty -= req.body.qty;
+      }
+      await position.save();
+    } else if (req.body.mode === "BUY") {
+      let newPosition = new PositionsModel({
+        product: "CNC",
+        name: req.body.name,
+        qty: req.body.qty,
+        avg: req.body.price,
+        price: req.body.price,
+        net: "+0.00%",
+        day: "+0.00%",
+        isLoss: false,
+      });
+      await newPosition.save();
+    }
+
+    res.send("Order saved and synced dynamically!");
   } catch (error) {
     console.error("Error saving new order:", error);
     res.status(500).send("Error saving new order");
