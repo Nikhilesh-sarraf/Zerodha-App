@@ -4,7 +4,7 @@ const Position = () => {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:3002"}/allPositions`)
+    fetch(`${process.env.REACT_APP_API_URL || "http://localhost:3002"}/allPositions`)
       .then((res) => res.json())
       .then((data) => setPositions(data))
       .catch((err) => console.error(err));
