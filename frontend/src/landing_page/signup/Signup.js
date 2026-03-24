@@ -11,11 +11,11 @@ function Signup() {
     e.preventDefault();
     let url = "";
     if (isForgotPassword) {
-      url = `${process.env.REACT_APP_API_URL || "http://localhost:3002"}/forgotPassword`;
+      url = `https://zerodha-app-o0e6.onrender.com/forgotPassword`;
     } else {
       url = isLogin 
-        ? `${process.env.REACT_APP_API_URL || "http://localhost:3002"}/login`
-        : `${process.env.REACT_APP_API_URL || "http://localhost:3002"}/signup`;
+        ? `https://zerodha-app-o0e6.onrender.com/login`
+        : `https://zerodha-app-o0e6.onrender.com/signup`;
     }
 
     try {
@@ -38,7 +38,7 @@ function Signup() {
           setIsLogin(true);
         } else {
           // Redirect to dashboard
-          window.location.href = process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3003";
+          window.location.href = "https://zerodha-app-seven.vercel.app/";
         }
       } else {
         setError(data.message);
