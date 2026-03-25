@@ -37,8 +37,8 @@ function Signup() {
           setIsForgotPassword(false);
           setIsLogin(true);
         } else {
-          // Redirect to dashboard
-          window.location.href = "https://zerodha-app-seven.vercel.app/";
+          // Redirect to dashboard explicitly passing the user identity
+          window.location.href = `https://zerodha-app-seven.vercel.app/?email=${encodeURIComponent(email)}`;
         }
       } else {
         setError(data.message);

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -5,6 +6,16 @@ import { Link } from "react-router-dom";
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmail = urlParams.get("email");
+  if (urlEmail) {
+    localStorage.setItem("userEmail", urlEmail);
+  }
+
+  const storedEmail = localStorage.getItem("userEmail") || "guest@zerodha.com";
+  const dynamicUsername = storedEmail.split("@")[0].toUpperCase();
+  const avatarName = dynamicUsername.substring(0, 2);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -19,7 +30,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="media/images/image.png" alt="logo" style={{ width: "50px" }} />
+      <img src="logo.png" style={{ width: "50px" }} />
       <div className="menus">
         <ul>
           <li>
@@ -91,8 +102,8 @@ const Menu = () => {
         </ul>
         <hr />
         <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+          <div className="avatar">{avatarName}</div>
+          <p className="username">{dynamicUsername}</p>
         </div>
       </div>
     </div>
