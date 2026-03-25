@@ -7,6 +7,7 @@ import Orders from "./Orders";
 import Positions from "./Position";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
+import Apps from "./Apps";
 import { GeneralContextProvider } from "./GeneralContext";
 
 const Dashboard = () => {
@@ -22,6 +23,7 @@ const Dashboard = () => {
           <Route path="/holdings" element={<Holdings />} />
           <Route path="/positions" element={<Positions />} />
           <Route path="/funds" element={<Funds />} />
+          <Route path="/apps" element={<Apps />} />
         </Routes>
       </div>
     </div>
